@@ -1,0 +1,16 @@
+.env
+venv
+env
+
+
+.vscode
+
+.pytest_cache
+
+test
+keys.py
+test_unitaires
+data
+
+src/__pycache__/
+__pycache__/

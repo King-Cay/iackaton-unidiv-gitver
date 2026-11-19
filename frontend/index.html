@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="UNIDIV — Outil d'aide à la consultation transculturelle basé sur la littérature médicale scientifique." />
+  <title>UNIDIV — Aide à la Consultation Transculturelle</title>
+  <link rel="icon" type="image/jpeg" href="assets/logo.jpg" />
+
+  <!-- Google Fonts : Plus Jakarta Sans (UI & Titres) + JetBrains Mono (PMID / DOI) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Feuilles de style modulaires -->
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+</head>
+<body>
+  <!-- Arrière-plan décoratif subtil -->
+  <div class="ambient-bg" aria-hidden="true">
+    <div class="ambient-orb ambient-orb--primary"></div>
+    <div class="ambient-orb ambient-orb--secondary"></div>
+    <div class="ambient-grid"></div>
+  </div>
+
+  <!-- Barre de navigation supérieure -->
+  <header class="topbar" id="topbar">
+    <div class="container topbar__inner">
+      <a href="#/" class="brand" aria-label="Retour à l'accueil UNIDIV">
+        <span class="brand__logo" aria-hidden="true">
+          <img src="assets/logo.jpg" alt="Logo UNIDIV" class="brand__logo-img" />
+        </span>
+        <span class="brand__text">
+          <span class="brand__name">UNIDIV</span>
+          <span class="brand__tag">Médecine Transculturelle</span>
+        </span>
+      </a>
+
+      <!-- Fil d'Ariane dynamique -->
+      <nav class="breadcrumb" id="breadcrumb" aria-label="Fil d'Ariane"></nav>
+
+      <!-- Actions globales -->
+      <div class="topbar__actions">
+        <span class="status-pill" id="backendStatusPill" title="État de connexion au pipeline Python">
+          <span class="status-pill__dot"></span>
+          <span class="status-pill__label">Vérification...</span>
+        </span>
+
+        <button type="button" class="icon-btn" id="themeToggleBtn" aria-label="Basculer le thème clair/sombre" title="Mode clair / sombre">
+          <span class="icon-sun" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Conteneur principal des vues SPA -->
+  <main id="app" class="main-content" role="main">
+    <!-- Le contenu est injecté dynamiquement par le routeur (app.js) -->
+  </main>
+
+  <!-- Pied de page discret -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p class="footer__copy">
+        <strong>UNIDIV</strong> · Synthèse clinique assistée par RAG (Littérature scientifique · NVIDIA NIM)
+      </p>
+      <p class="footer__disclaimer">
+        Outil d'aide à la compréhension culturelle et clinique. Ne se substitue pas au jugement médical ni au dialogue singulier avec le patient.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Conteneur de notifications toast -->
+  <div class="toast-container" id="toastContainer" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Point d'entrée JavaScript modulaire (ES Modules) -->
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,221 @@
+/* ==========================================================================
+   Base & Reset — UNIDIV
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+/* Focus accessible */
+:focus-visible {
+  outline: 2px solid var(--brand-secondary);
+  outline-offset: 2px;
+}
+
+/* Conteneur central */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 3vw, 2rem);
+}
+
+/* Arrière-plan ambiant */
+.ambient-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.ambient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.42;
+}
+
+.ambient-orb--primary {
+  width: 580px;
+  height: 580px;
+  top: -180px;
+  left: -120px;
+  background: radial-gradient(circle, rgba(15, 76, 129, 0.28), transparent 70%);
+}
+
+.ambient-orb--secondary {
+  width: 520px;
+  height: 520px;
+  bottom: -160px;
+  right: -100px;
+  background: radial-gradient(circle, rgba(13, 148, 136, 0.24), transparent 70%);
+}
+
+.ambient-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, var(--border-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--border-color) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 75% 65% at 50% 25%, #000 35%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 75% 65% at 50% 25%, #000 35%, transparent 100%);
+  opacity: 0.55;
+}
+
+.main-content {
+  flex: 1;
+  padding-top: var(--topbar-height);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Animations d'entrée */
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseSoft {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.55;
+    transform: scale(0.92);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-in {
+  animation: fadeSlideUp 0.42s var(--ease-out) both;
+}
+
+/* Pied de page */
+.footer {
+  margin-top: auto;
+  border-top: 1px solid var(--border-color);
+  background: var(--bg-surface-elevated);
+  backdrop-filter: blur(12px);
+  padding-block: 1.25rem;
+}
+
+.footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 2rem;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.footer__copy strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* Utilitaires */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* Feuille de style d'impression (Exporter la fiche clinique) */
+@media print {
+  .topbar,
+  .footer,
+  .ambient-bg,
+  .results-actions,
+  .sources-filter,
+  .btn-back,
+  .toast-container {
+    display: none !important;
+  }
+
+  body {
+    background: #ffffff;
+    color: #000000;
+  }
+
+  .main-content {
+    padding-top: 0;
+  }
+
+  .results-layout {
+    display: block !important;
+  }
+
+  .determinant-card,
+  .source-card {
+    box-shadow: none !important;
+    border: 1px solid #cbd5e1 !important;
+    break-inside: avoid;
+    margin-bottom: 1rem;
+  }
+}
