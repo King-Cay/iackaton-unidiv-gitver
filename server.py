@@ -21,8 +21,9 @@ from src.chatbot import ask_clinical_chatbot
 
 BASE_DIR = Path(__file__).resolve().parent
 FRONTEND_DIR = BASE_DIR / "frontend"
-HOST = os.environ.get("UNIDIV_HOST", "127.0.0.1")
-PORT = int(os.environ.get("UNIDIV_PORT", "8000"))
+HOST = os.environ.get("UNIDIV_HOST", "0.0.0.0")
+PORT = int(os.environ.get("PORT") or os.environ.get("UNIDIV_PORT", "8000"))
+
 
 # Assure les bons types MIME pour les modules ES6 sous Windows
 mimetypes.add_type("application/javascript; charset=utf-8", ".js")
